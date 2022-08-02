@@ -1,0 +1,35 @@
+﻿@if ((string)Session["Role"] == "User")
+{
+    {
+        ViewBag.Title = "Home Page";
+    }
+
+<script type="text/javascript">
+  var imageURLs = [
+       "http://1.bp.blogspot.com/-5DqCwqAIibU/UUQp_HLVCZI/AAAAAAAADCA/t1BrEHVZrH4/s1600/obama-really-not-bad.jpg"
+     , "http://i1.kym-cdn.com/photos/images/original/000/285/454/da5.jpg"
+     , "http://i0.kym-cdn.com/photos/images/newsfeed/000/280/914/9d9.gif"
+     , "http://assets.diylol.com/hfs/4d0/a50/09a/resized/y-u-no-meme-generator-trollface-why-you-no-troll-29b388.jpg"
+     , "http://ci.memecdn.com/655/4104655.jpg"
+  ];
+  function getImageTag() {
+    var img = '<img src=\"';
+    var randomIndex = Math.floor(Math.random() * imageURLs.length);
+    img += imageURLs[randomIndex];
+    img += '\" style="width:500px;height:500px;border:0;alt=\"Some alt text\"/>';
+    return img;
+  }
+</script>
+<script type="text/javascript">
+  document.write(getImageTag());
+</script>
+<h1>Aw You thought you could do a thing</h1>
+<h3>Well Nope...</h3>
+@section Scripts {
+    @Scripts.Render("~/bundles/alerts")
+}
+}
+else
+{
+    <h1>Nice try...</h1>
+}

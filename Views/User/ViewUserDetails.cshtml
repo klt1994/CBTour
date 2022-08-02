@@ -1,0 +1,61 @@
+﻿@model CBTour.Models.UserVM
+@if ((string)Session["Role"] != null)
+{
+
+    <div>
+        <h4>Account Details</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email) <br />
+                @Html.ActionLink("Edit", "EditUserEmail", new { Email = Model.Email })
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Password) <br />
+                @Html.ActionLink("Edit", "EditUserPassword", new { Email = Model.Email })
+            </dd>
+
+            @if ((string)Session["Role"] == "Admin")
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Role)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Role) <br />
+                    @Html.ActionLink("Edit", "EditUserRole", new { Email = Model.Email })
+                </dd>
+
+            }
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "EditUserInfo", new { Email = Model.Email }, new { Password = Model.Password }) |
+        @if ((string)Session["Role"] == "Mod")
+        {
+            @Html.ActionLink("Back", "ModIndex", new { Email = Model.Email })
+        }
+        else if ((string)Session["Role"] == "Admin")
+        {
+            @Html.ActionLink("Back to List", "ViewAllUsers")
+        }
+        else
+        {
+            @Html.ActionLink("Back", "UserIndex")
+        }
+    </p>
+}
+else
+{
+    <h1>Nice try...</h1>
+}

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<CBTour.Models.UserVM>
+@if ((string)Session["Role"] == "Admin")
+{
+
+    <p>
+        @Html.ActionLink("Create New", "CreateUser")
+    </p>
+    <table class="table">
+        <tr>
+            @*<th>
+                @Html.DisplayName("Profile Picture")
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                    
+                <td>
+                    <img src='<%= item.ImagePath %>' alt="Image" /><br />
+                    @Html.DisplayFor(modelItem => item.Email) <br />
+                    @Html.ActionLink("Edit", "EditUserEmail", new { Email = item.Email })
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit All", "EditUserInfo", new { Email = item.Email }) |
+                    @Html.ActionLink("Details", "ViewUserDetails", new { Email = item.Email }) |
+                    @Html.ActionLink("Delete", "DeleteUser", new { Email = item.Email })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+    <h1>Nice try...</h1>
+}

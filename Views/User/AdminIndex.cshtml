@@ -1,0 +1,19 @@
+﻿@if ((string)Session["Role"] == "Admin")
+{
+
+    {
+        ViewBag.Title = "Home Page";
+    }
+
+    <img src="https://tracker.moodle.org/secure/attachment/30912/f3.png" style="width:100px;height:100px;border:0;margin-top:20px;" />
+    <h1 class="title">@Html.ActionLink("Create A User", "CreateUser")</h1>
+    <img src="http://newdesk.anderson5.net/deskpro4/web/vendor/icons/job-search/png/list61.png" style="width:100px;height:100px;border:0;" />
+    <h1 class="title">@Html.ActionLink("View All Users", "ViewAllUsers")</h1>
+    @section Scripts {
+        @Scripts.Render("~/bundles/alerts")
+    }
+}
+else
+{
+    <h1>Nice try...</h1>
+}

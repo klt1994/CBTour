@@ -1,0 +1,11 @@
+﻿@model CBTour.Models.UserVM
+
+<img src='<%= item.ImagePath %>' alt="Image" /><br />
+
+@using (Html.BeginForm("SetImage", "User", FormMethod.Post,
+                                            new { enctype = "multipart/form-data" }))
+{
+    <label for="file">Upload Image:</label>
+                        <input type="file" name="file" id="file" style="width: 100%;" />
+                        <input type="submit" value="Upload" class="submit" />
+}

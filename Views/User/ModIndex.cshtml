@@ -1,0 +1,18 @@
+﻿@if ((string)Session["Role"] == "Mod")
+{
+
+{
+    ViewBag.Title = "Home Page";
+}
+
+<img src="https://cdn4.iconfinder.com/data/icons/pretty_office_3/256/sign-up.png" style="width:100px;height:100px;border:0;margin-top:20px;" />
+<h1 class="title">@Html.ActionLink("View User Details", "ViewUserDetails", new { email = Model.Email })</h1>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/alerts")
+}
+}
+else
+{
+    <h1>Nice try...</h1>
+}
